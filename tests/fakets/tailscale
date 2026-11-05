@@ -1,0 +1,7 @@
+#!/bin/bash
+# fake tailscale CLI for tests
+echo "$@" >> "$FAKE_TS_LOG"
+if [ "$1" = "status" ]; then cat "$FAKE_TS_STATUS"; exit 0; fi
+if [ "$1" = "file" ]; then
+  for a in "$@"; do [ -f "$a" ] && cp "$a" "$FAKE_TS_RECV/"; done
+  [ -n "$FAKE_TS_FAIL" ] && { echo "no such peer" >&2; exit 1; }; exit 0; fi

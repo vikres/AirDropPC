@@ -1,0 +1,14 @@
+# Secrets and personal data created on install / at runtime - never commit
+token.txt
+shortcut-values.txt
+sync-state.json
+*.log
+*.log.*
+_outbox/
+
+# Python
+__pycache__/
+*.pyc
+
+# Test scratch
+tests/tmp/

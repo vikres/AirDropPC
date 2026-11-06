@@ -41,10 +41,10 @@ Copy, then press the Action Button. The receiver picks the direction:
 The notification says which way it went. An iPhone text that lost to a newer PC copy is kept in `Downloads\iPhone text history.txt`.
 
 - A link from the iPhone also opens in the PC browser.
-- Files from the iPhone are put on the PC clipboard too, so Ctrl+V pastes them into mail, Teams, Explorer or WhatsApp Web. Files arriving within 20 seconds of each other paste together.
+- Files from the iPhone are put on the PC clipboard too. Files arriving within 20 seconds of each other paste together.
 - From the PC: several files arrive as separate files, a folder as a zip, a screenshot as a PNG.
 - From the iPhone the Action Button sends one item, and iOS drops the file name (you get `Clipboard <date>.pdf`). For several files, or real names, use Share → Tailscale; they land in Downloads.
-- WhatsApp: copying messages gives their text only. For a document, open it → Share → Tailscale.
+- WhatsApp: copying messages gives their text only. For a document, open it → Share → Tailscale. (Whatsapp limitation)
 - Files of hundreds of MB exceed the memory iOS gives a Shortcut. Share → Tailscale.
 - Ctrl+Alt+S needs "Send Files" on in the Tailscale admin console (Settings → General).
 
@@ -60,7 +60,7 @@ The notification says which way it went. An iPhone text that lost to a newer PC 
 - Only devices on your Tailscale network can reach the PC (firewall rule plus an address check in the receiver), and every request needs your token.
 - Tailscale encrypts everything end to end.
 - The iPhone only gets what was last copied on the PC. It can't browse the disk.
-- Don't share your own copy of the Shortcut: it contains your token. To share it, open it → Setup → Add New Question on the address, token and folder; those fields are then blank in the shared link.
+- Send the original github if you want to share it, to not share your tokens)
 
 ## How it works
 

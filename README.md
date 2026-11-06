@@ -21,9 +21,9 @@ Needs Windows 10 or 11, an iPhone and a free Tailscale account. The Action Butto
 1. **Tailscale on both devices.** [PC](https://tailscale.com/download/windows), [iPhone](https://apps.apple.com/app/tailscale/id1470499037), same account on both. In the iPhone app, turn on VPN On Demand so it stays connected.
 2. **Python on the PC.** From [python.org](https://www.python.org/downloads/). Tick "Add python.exe to PATH" in the installer.
 3. **This project on the PC.** Code → Download ZIP. Unzip it somewhere permanent, e.g. `C:\Tools\iphone-pc-drop`. Not Downloads: the receiver runs from this folder at every logon.
-4. **Double-click `Install.cmd`.** Accept the admin prompt. It installs the Python packages, creates your token, opens port 8765 to Tailscale addresses only, and starts the receiver at logon. At the end it prints your PC address and token; they are also in `shortcut-values.txt`.
+4. **Double-click `Install.cmd`.** Accept the admin prompt. It installs the Python packages, creates your token, opens port 8765 to Tailscale addresses only, and starts the receiver at logon. At the end it shows your PC address and token, as text and as QR codes. Leave the window open.
 5. **On the iPhone**, Files app → On My iPhone → new folder named `PC`.
-6. **Add the Shortcut:** SYNC_SHORTCUT_LINK. It asks for the PC address, the token and the `PC` folder.
+6. **Add the Shortcut:** SYNC_SHORTCUT_LINK. It asks for the PC address and the token: scan their QR codes in the Install window with the iPhone camera to copy them, or type them. Then pick the `PC` folder.
 7. Settings → Action Button → Shortcut → Sync with PC. (No Action Button: Settings → Accessibility → Touch → Back Tap → Double Tap → Sync with PC.)
    Settings → Apps → Shortcuts → Paste from Other Apps → Allow, otherwise iOS asks on every press.
 
@@ -51,7 +51,7 @@ The notification says which way it went. An iPhone text that lost to a newer PC 
 ## If it breaks
 
 - Re-run `Install.cmd`. Safe to repeat, keeps your token, fixes most things (Python update, missing package, receiver not started). To update: replace `iphone_drop.py`, re-run it.
-- "403" on the iPhone: the token in the Shortcut is wrong. Re-enter it from `shortcut-values.txt`.
+- "403" on the iPhone: the token in the Shortcut is wrong. Re-run `Install.cmd` to see it again, and correct it in the Shortcut.
 - Still broken: run `python iphone_drop.py` in the folder, errors show in the window. The log is `iphone_drop.log`.
 - Uninstall: `Uninstall.cmd`, then delete the folder.
 

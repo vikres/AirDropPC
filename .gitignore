@@ -1,6 +1,5 @@
 # Secrets and personal data created on install / at runtime - never commit
 token.txt
-shortcut-values.txt
 sync-state.json
 *.log
 *.log.*

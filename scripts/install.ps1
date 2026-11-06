@@ -6,7 +6,6 @@ $ErrorActionPreference = "Stop"
 $here = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)   # the project folder, one level up from scripts\
 $file = Join-Path $here "iphone_drop.py"
 $tokFile = Join-Path $here "token.txt"
-$valuesFile = Join-Path $here "shortcut-values.txt"
 
 try {
     if (-not (Test-Path $file)) { throw "iphone_drop.py not found next to install.ps1." }
@@ -22,18 +21,18 @@ try {
     if (-not (Test-Path $pyw)) { throw "pythonw.exe not found next to $py" }
     Write-Host "[1/6] Python $ver found: $py"
 
-    Write-Host "[2/6] Installing packages (flask waitress pyperclip win11toast pillow pillow-heif)..."
-    & $py -m pip install --upgrade --quiet --disable-pip-version-check flask waitress pyperclip win11toast pillow pillow-heif
+    Write-Host "[2/6] Installing packages (flask waitress pyperclip win11toast pillow pillow-heif qrcode)..."
+    & $py -m pip install --upgrade --quiet --disable-pip-version-check flask waitress pyperclip win11toast pillow pillow-heif qrcode
     if ($LASTEXITCODE -ne 0) { throw "pip install failed (see messages above)." }
 
     Write-Host "[3/6] Token..."
     $token = ""
     if (Test-Path $tokFile) { $token = ([IO.File]::ReadAllText($tokFile)).Trim([char]0xFEFF, " ", "`r", "`n", "`t") }
     if (-not $token) {
-        $token = (& $py -c "import secrets; print(secrets.token_urlsafe(32))").Trim()
+        $token = (& $py -c "import secrets; a='abcdefghjkmnpqrstuvwxyz23456789'; t=''.join(secrets.choice(a) for _ in range(8)); print(t[:4]+'-'+t[4:])").Trim()
         [IO.File]::WriteAllText($tokFile, $token, (New-Object Text.ASCIIEncoding))
-        Write-Host "      new token created in token.txt"
-    } else { Write-Host "      existing token.txt kept" }
+        Write-Host "      created"
+    } else { Write-Host "      kept (the Shortcut keeps working)" }
 
     Write-Host "[4/6] Firewall rule (port 8765, Tailscale addresses only)..."
     Get-NetFirewallRule -DisplayName "iPhone drop (8765)" -ErrorAction SilentlyContinue | Remove-NetFirewallRule
@@ -69,19 +68,17 @@ try {
     $ts = (Get-Command tailscale -ErrorAction SilentlyContinue).Source
     if (-not $ts -and (Test-Path "C:\Program Files\Tailscale\tailscale.exe")) { $ts = "C:\Program Files\Tailscale\tailscale.exe" }
     if ($ts) { try { $ip = ((& $ts ip -4 2>$null) | Select-Object -First 1).Trim() } catch {} }
-    if (-not $ip) { $ip = "<not found - install/sign in to Tailscale, then run Install.cmd again>" }
+    if (-not $ip) {
+        Write-Host ""
+        Write-Host "Tailscale address not found. Install Tailscale, sign in, then run Install.cmd again." -ForegroundColor Red
+        return
+    }
+    $address = "http://$($ip):8765"
 
-    $values = @"
-Values for the iPhone Shortcut (see README.md). Keep this private.
-
-PC address : http://$($ip):8765
-Token      : $token
-"@
-    [IO.File]::WriteAllText($valuesFile, $values, (New-Object Text.UTF8Encoding $false))
     Write-Host ""
-    Write-Host $values
-    Write-Host ""
-    Write-Host "Saved in shortcut-values.txt" -ForegroundColor Green
+    Write-Host "Done. The Shortcut will ask for these two values." -ForegroundColor Green
+    Write-Host "Scan a QR code with the iPhone camera to copy it, then paste it in." -ForegroundColor Green
+    & $py (Join-Path $here "scripts\show_qr.py") $address $token
 }
 catch {
     Write-Host ""

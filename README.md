@@ -6,7 +6,7 @@ Built for my own use. It works for me; I don't promise support.
 
 **[Download](https://github.com/vikres/iphone-pc-drop/archive/refs/heads/main.zip)** · Windows 10/11
 
-**[Download](https://github.com/vikres/iphone-pc-drop/archive/refs/heads/main.zip)** · Iphone shortcut
+**[Download](https://www.icloud.com/shortcuts/026b86218b6e4892ac42051b72d8a2f1)** · Iphone shortcut
 
 | You do | What happens |
 |---|---|
@@ -23,7 +23,7 @@ Needs Windows 10 or 11, an iPhone and a free Tailscale account. The Action Butto
 3. **This project on the PC.** Code → Download ZIP. Unzip it somewhere permanent, e.g. `C:\Tools\iphone-pc-drop`. Not Downloads: the receiver runs from this folder at every logon.
 4. **Double-click `Install.cmd`.** Accept the admin prompt. It installs the Python packages, creates your token, opens port 8765 to Tailscale addresses only, and starts the receiver at logon. At the end it shows your PC address and token, as text and as QR codes. Leave the window open.
 5. **On the iPhone**, Files app → On My iPhone → new folder named `PC`.
-6. **Add the Shortcut:** SYNC_SHORTCUT_LINK. It asks for the PC address and the token: scan their QR codes in the Install window with the iPhone camera to copy them, or type them. Then pick the `PC` folder.
+6. **Add the Shortcut:** [SYNC_SHORTCUT_LINK](https://www.icloud.com/shortcuts/026b86218b6e4892ac42051b72d8a2f1). It asks for the PC address and the token: scan their QR codes in the Install window with the iPhone camera to copy them, or type them. Then pick the `PC` folder.
 7. Settings → Action Button → Shortcut → Sync with PC. (No Action Button: Settings → Accessibility → Touch → Back Tap → Double Tap → Sync with PC.)
    Settings → Apps → Shortcuts → Paste from Other Apps → Allow, otherwise iOS asks on every press.
 

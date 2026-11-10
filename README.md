@@ -4,9 +4,7 @@ AirDrop between an iPhone and a Windows PC, over [Tailscale](https://tailscale.c
 
 Built for my own use. It works for me; I don't promise support.
 
-**[Download](https://github.com/vikres/AirDropPC/archive/refs/heads/main.zip)** · Windows 10/11
-
-**[Download](https://www.icloud.com/shortcuts/d449036ebccd4806b2b7ed2fc62e4868)** · Iphone shortcut
+**PC:** see [Install](#install) · **iPhone Shortcut:** [icloud.com/shortcuts/d449…](https://www.icloud.com/shortcuts/d449036ebccd4806b2b7ed2fc62e4868)
 
 | You do | What happens |
 |---|---|
@@ -20,10 +18,10 @@ Needs Windows 10 or 11, an iPhone and a free Tailscale account. The Action Butto
 
 1. **Tailscale on both devices.** [PC](https://tailscale.com/download/windows), [iPhone](https://apps.apple.com/app/tailscale/id1470499037), same account on both. In the iPhone app, turn on VPN On Demand so it stays connected.
 2. **Python on the PC.** From [python.org](https://www.python.org/downloads/). Tick "Add python.exe to PATH" in the installer.
-3. **This project on the PC.** Code → Download ZIP. Unzip it somewhere permanent, e.g. `C:\Tools\iphone-pc-drop`. Not Downloads: the receiver runs from this folder at every logon.
+3. **Get the project.** On this page, click the green **Code** button → **Download ZIP** ([direct link](https://github.com/vikres/AirDropPC/archive/refs/heads/main.zip)). Unzip it somewhere permanent, e.g. `C:\Tools\AirDropPC`.
 4. **Double-click `Install.cmd`.** Accept the admin prompt. It installs the Python packages, creates your token, opens port 8765 to Tailscale addresses only, and starts the receiver at logon. At the end it shows your PC address and token, as text and as QR codes. Leave the window open.
 5. **On the iPhone**, Files app → On My iPhone → new folder named `PC`.
-6. **Add the Shortcut:** (https://www.icloud.com/shortcuts/d449036ebccd4806b2b7ed2fc62e4868). It asks for the PC address and the token: scan their QR codes in the Install window with the iPhone camera to copy them, or type them. Then pick the `PC` folder.
+6. **Add the Shortcut** on the iPhone: [icloud.com/shortcuts/d449…](https://www.icloud.com/shortcuts/d449036ebccd4806b2b7ed2fc62e4868). It asks for the PC address and the token: scan their QR codes in the Install window with the iPhone camera to copy them, or type them. Then pick the `PC` folder.
 7. Settings → Action Button → Shortcut → Sync with PC. (No Action Button: Settings → Accessibility → Touch → Back Tap → Double Tap → Sync with PC.)
    Settings → Apps → Shortcuts → Paste from Other Apps → Allow, otherwise iOS asks on every press.
 

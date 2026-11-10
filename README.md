@@ -2,7 +2,6 @@
 
 AirDrop between an iPhone and a Windows PC, over [Tailscale](https://tailscale.com). Copy on one device, press the iPhone's Action Button, paste on the other. Text, links, photos, files. Works on any Wi-Fi or mobile data, nothing goes through a third-party server.
 
-Built for my own use. It works for me; I don't promise support.
 
 **PC:** see [Install](#install) · **iPhone Shortcut:** [icloud.com/shortcuts/d449…](https://www.icloud.com/shortcuts/d449036ebccd4806b2b7ed2fc62e4868)
 
@@ -22,7 +21,7 @@ Needs Windows 10 or 11, an iPhone and a free Tailscale account. The Action Butto
 4. **Double-click `Install.cmd`.** Accept the admin prompt. It installs the Python packages, creates your token, opens port 8765 to Tailscale addresses only, and starts the receiver at logon. At the end it shows your PC address and token, as text and as QR codes. Leave the window open.
 5. **On the iPhone**, Files app → On My iPhone → new folder named `PC`.
 6. **Add the Shortcut** on the iPhone: [icloud.com/shortcuts/d449…](https://www.icloud.com/shortcuts/d449036ebccd4806b2b7ed2fc62e4868). It asks for the PC address and the token: scan their QR codes in the Install window with the iPhone camera to copy them, or type them. Then pick the `PC` folder.
-7. Settings → Action Button → Shortcut → Sync with PC. (No Action Button: Settings → Accessibility → Touch → Back Tap → Double Tap → Sync with PC.)
+7. Settings → Action Button → Shortcut → AirdropPC. (No Action Button: Settings → Accessibility → Touch → Back Tap → Double Tap → AirdropPC.)
    Settings → Apps → Shortcuts → Paste from Other Apps → Allow, otherwise iOS asks on every press.
 
 Check: copy some text on the iPhone, press the Action Button, Ctrl+V on the PC.

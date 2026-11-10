@@ -1,10 +1,10 @@
-# AirDropPC Drop
+# AirDropPC
 
 AirDrop between an iPhone and a Windows PC, over [Tailscale](https://tailscale.com). Copy on one device, press the iPhone's Action Button, paste on the other. Text, links, photos, files. Works on any Wi-Fi or mobile data, nothing goes through a third-party server.
 
 Built for my own use. It works for me; I don't promise support.
 
-**[Download](https://github.com/vikres/iphone-pc-drop/archive/refs/heads/main.zip)** · Windows 10/11
+**[Download](https://github.com/vikres/AirDropPC/archive/refs/heads/main.zip)** · Windows 10/11
 
 **[Download](https://www.icloud.com/shortcuts/d449036ebccd4806b2b7ed2fc62e4868)** · Iphone shortcut
 
